@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Nom du fichier
-file_name = "longue_binary_XOR2_VonNeumann.txt"
+file_name = "longue_binary.txt"
 
 # Dictionnaire des tests avec leurs p-values
 test_results = {
