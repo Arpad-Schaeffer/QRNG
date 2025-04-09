@@ -85,3 +85,5 @@ if __name__ == "__main__":
             pvalues = extract_pvalues_from_file(file_path)
             filename = os.path.basename(file_path)
             plot_pvalues(pvalues, f"Résultats des tests NIST pour {filename}")
+
+
