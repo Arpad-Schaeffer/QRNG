@@ -7,14 +7,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Ouvrir une fenêtre pour sélectionner le fichier CSV
-# def select_file():
-#     Tk().withdraw()  # Cacher la fenêtre principale de Tkinter
-#     file_path = askopenfilename(filetypes=[("CSV files", "*.csv")])
-#     return file_path
+def select_file():
+    Tk().withdraw()  # Cacher la fenêtre principale de Tkinter
+    file_path = askopenfilename(filetypes=[("CSV files", "*.csv")])
+    return file_path
 
 # Charger les données et tracer la gaussienne
 def plot_gaussian():
-    file_path = "/Users/luluzaidat/Desktop/PSC Git/QRNG/real_data copie.csv"
+    file_path = select_file()   # Demander à l'utilisateur de sélectionner un fichier CSV
+    
     if not file_path:
         print("Aucun fichier sélectionné.")
         return
