@@ -32,24 +32,19 @@ def assigner_valeurs_binaires(values, limites, k):
     return binary_values
 
 def plot_gaussian_and_save_binary(k):
-    csv_file = select_file()  # Demander à l'utilisateur de sélectionner un fichier CSV
+    file_path = select_file()  # Demander à l'utilisateur de sélectionner un fichier CSV
     
-    if not csv_file:
+    if not file_path:
         print("Aucun fichier sélectionné.")
         return
 
     try:
-        with open(csv_file, 'r') as f:
-            content = f.read().strip()
-            if not content:
-                print("Le fichier est vide.")
-                exit()
+        data = pd.read_csv(file_path)
+        #if data.shape[1] != 1:
+        #    print("Le fichier CSV doit contenir une seule colonne de données.")
+        #    return
 
-        # Charger les données avec pandas
-        df = pd.read_csv(csv_file, header=None, skip_blank_lines=True)
-
-        # Extraire la première ligne comme une liste de nombres
-        values = df.iloc[0].astype(float).tolist()
+        values = data.iloc[:, 0]
 
         # Calcul des paramètres de la gaussienne
         mean, std = norm.fit(values)
@@ -63,11 +58,11 @@ def plot_gaussian_and_save_binary(k):
         # Sauvegarder les valeurs binaires dans un fichier texte
         output_file = f"decoupage{k}.txt"
         with open(output_file, "w") as f:
-            f.write("".join(binary_values))
+            f.write("\n".join(binary_values))
         print(f"Fichier binaire sauvegardé sous le nom : {output_file}")
 
         # Tracer l'histogramme et la gaussienne
-        plt.hist(values, bins=100, density=True, alpha=0.6, color='g')
+        plt.hist(values, bins=30, density=True, alpha=0.6, color='g')
         xmin, xmax = plt.xlim()
         x = np.linspace(xmin, xmax, 100)
         p = norm.pdf(x, mean, std)
@@ -77,7 +72,7 @@ def plot_gaussian_and_save_binary(k):
         for limite in limites[1:-1]:
             plt.axvline(limite, color='red', linestyle='--', alpha=0.7)
 
-        title = f"Fit Gaussienne: μ = {mean:.10f}, σ = {std:.10f}"
+        title = f"Fit Gaussienne: μ = {mean:.2f}, σ = {std:.2f}"
         plt.title(title)
         plt.xlabel("Valeurs")
         plt.ylabel("Densité")

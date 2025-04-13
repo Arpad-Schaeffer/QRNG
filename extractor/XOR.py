@@ -1,4 +1,7 @@
 import os
+import tkinter as tk
+from tkinter import filedialog
+import re
 
 def apply_xor_extractor(input_file, group_size):
     """
@@ -9,16 +12,16 @@ def apply_xor_extractor(input_file, group_size):
     :param group_size: Nombre de bits utilisés pour l'opération XOR (ex. 2, 5, 10).
     """
     # Vérification de l'existence du fichier
-    if not os.path.exists(input_file):
-        print(f"Erreur : le fichier '{input_file}' n'existe pas.")
+    if not os.path.exists(input_file[0]):
+        print(f"Erreur : le fichier '{input_file[0]}' n'existe pas.")
         return
     
     # Création du nom du fichier de sortie
-    base_name, ext = os.path.splitext(input_file)
+    base_name, ext = os.path.splitext(input_file[0])
     output_file = f"{base_name}_XOR{group_size}{ext}"
 
     # Lecture du fichier d'entrée
-    with open(input_file, 'r') as f:
+    with open(input_file[0], 'r') as f:
         data = f.read().strip()  # Suppression des espaces et sauts de ligne
 
     # Vérification du format (seulement 0 et 1 autorisés)
@@ -41,9 +44,17 @@ def apply_xor_extractor(input_file, group_size):
         f.write(''.join(xor_result))
 
     print(f" XOR avec {group_size} bits terminé : {output_file}")
-
+#interactive use 
+def select_files():
+    root = tk.Tk()
+    root.withdraw()
+    file_paths = filedialog.askopenfilenames(
+        title="Choisir un ou plusieurs fichiers de résultats",
+        filetypes=[("Fichiers texte", "*.txt"), ("Tous les fichiers", "*.*")]
+    )
+    return file_paths
 # Fichier à traiter
-input_filename = "longue_binary.txt"  # Remplace par le nom de ton fichier
+input_filename = select_files() # Remplace par le nom de ton fichier
 
 # Boucle sur différentes tailles de groupes
 for group_size in [2, 5, 10]:

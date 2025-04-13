@@ -1,4 +1,16 @@
 import os
+import tkinter as tk
+from tkinter import filedialog
+import re
+
+def select_files():
+    root = tk.Tk()
+    root.withdraw()
+    file_paths = filedialog.askopenfilenames(
+        title="Choisir un ou plusieurs fichiers de résultats",
+        filetypes=[("Fichiers texte", "*.txt"), ("Tous les fichiers", "*.*")]
+    )
+    return file_paths
 
 def von_neumann_extractor(input_file):
     """
@@ -6,10 +18,10 @@ def von_neumann_extractor(input_file):
     applies the Von Neumann debiasing algorithm, and writes the output to a new file.
     """
 
-    base_name, ext = os.path.splitext(input_file)
+    base_name, ext = os.path.splitext(input_file[0])
     output_file = f"{base_name}_VonNeumann{ext}"
 
-    with open(input_file, 'r') as file:
+    with open(input_file[0], 'r') as file:
         bitstring = file.read().strip()  # Read the entire line and remove extra spaces/newlines
 
     extracted_bits = []  # List to store unbiased bits
@@ -29,9 +41,11 @@ def von_neumann_extractor(input_file):
         print(f"Extracted {len(extracted_bits)} unbiased bits. Output saved to {output_file}")
 
 # Interactive use
+
+
 #file_path = input("Enter the path of the file to extract the data: ")
 #new_file_name_vonNeumann = input("Enter the name of the new extracted file to save the data: ")
-input_filename = "longue_binary_XOR10.txt"  # Remplace par le nom de ton fichier
+input_filename = select_files()  # Remplace par le nom de ton fichier
 
 
 von_neumann_extractor(input_filename)  # Call the function 
