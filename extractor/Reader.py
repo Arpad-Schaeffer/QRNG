@@ -1,62 +1,83 @@
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+
+# Fonction pour extraire les données d'une colonne spécifique dans un fichier CSV
 def extract_column_data(file_path):
+    """
+    Lit un fichier CSV et extrait les données de la colonne 'channel' 
+    si elles correspondent aux valeurs '1' ou '4'.
+
+    Args:
+        file_path (str): Chemin du fichier CSV.
+
+    Returns:
+        list: Liste des valeurs extraites de la colonne 'channel'.
+    """
     column_data = []
     with open(file_path, 'r') as file:
         for line in file:
-            line = line.strip()
+            line = line.strip()  # Supprime les espaces inutiles
+            # Ignore les lignes vides, les commentaires et les lignes sans virgule
             if line and not line.startswith('#') and ',' in line:
-                time_tag, channel = line.split(',')
-                channel = channel.strip()
-                if channel in ('1', '4'):
+                time_tag, channel = line.split(',')  # Sépare les colonnes
+                channel = channel.strip()  # Nettoie la valeur de la colonne 'channel'
+                if channel in ('1', '4'):  # Filtre les valeurs intéressantes
                     column_data.append(channel)
     return column_data
 
+# Fonction pour transformer les données extraites
 def transform_column_data(column_data):
+    """
+    Transforme les données extraites en remplaçant '4' par 1 et tout autre
+    valeur par 0.
+
+    Args:
+        column_data (list): Liste des valeurs extraites.
+
+    Returns:
+        list: Liste des valeurs transformées.
+    """
     transformed_data = []
     for channel in column_data:
         n = int(channel)
-        if n == 4:
-            k=1
-        else:
-            k=0
+        k = 1 if n == 4 else 0  # Transformation conditionnelle
         transformed_data.append(k)
     return transformed_data
 
-
-file_path = 'data/longue.txt'
-column_data = extract_column_data(file_path)
-transformed_data = transform_column_data(column_data)
-#print(transformed_data[1:10])
-new_file_name = input("Enter the name of the new file to save the data: ")
-new_file_name_vonNeumann = input("Enter the name of the new extracted file to save the data: ")
-
-with open(new_file_name, "w", encoding="utf-8") as fichier:
-    # Écrire des données dans le fichier
-    for i in transformed_data:
-        fichier.write(str(i))
-
-def von_neumann_extractor(input_file, output_file):
+# Fonction pour ouvrir une boîte de dialogue et sélectionner un fichier
+def select_file():
     """
-    Reads a file containing a string of 0s and 1s (on one line),
-    applies the Von Neumann debiasing algorithm, and writes the output to a new file.
+    Ouvre une boîte de dialogue pour permettre à l'utilisateur de sélectionner
+    un fichier CSV.
+
+    Returns:
+        str: Chemin du fichier sélectionné ou une chaîne vide si aucun fichier
+        n'est sélectionné.
     """
-    with open(input_file, 'r') as file:
-        bitstring = file.read().strip()  # Read the entire line and remove extra spaces/newlines
+    Tk().withdraw()  # Cacher la fenêtre principale de Tkinter
+    file_path = askopenfilename(filetypes=[("CSV files", "*.csv")])
+    return file_path
 
-    extracted_bits = []  # List to store unbiased bits
+# Point d'entrée principal du script
+if __name__ == "__main__":
+    # Demander à l'utilisateur de sélectionner un fichier CSV
+    file_path = select_file()
+    if not file_path:  # Vérifie si un fichier a été sélectionné
+        print("Aucun fichier sélectionné.")
+        exit()
 
-    # Process bits in pairs
-    for i in range(0, len(bitstring) - 1, 2):  # Step by 2 to get pairs
-        pair = bitstring[i:i+2]  # Take two consecutive bits
-        
-        if pair == "01":
-            extracted_bits.append("0")  # Keep as 0
-        elif pair == "10":
-            extracted_bits.append("1")  # Keep as 1
+    # Extraire et transformer les données
+    column_data = extract_column_data(file_path)
+    transformed_data = transform_column_data(column_data)
 
-    # Write the output to a file
-    with open(output_file, 'w') as file:
-        file.write("".join(extracted_bits)) 
-        print(f"Extracted {len(extracted_bits)} unbiased bits. Output saved to {output_file}")
+    # Générer un nouveau nom de fichier pour les données transformées
+    new_file_name = file_path.replace('.csv', '_extracted.txt')
 
-von_neumann_extractor(file_path, new_file_name_vonNeumann)  # Call the function 
+    # Écrire les données transformées dans un nouveau fichier
+    with open(new_file_name, "w", encoding="utf-8") as fichier:
+        for value in transformed_data:
+            fichier.write(str(value) + '\n')  # Ajoute un saut de ligne pour chaque valeur
+
+    print(f"Les données transformées ont été enregistrées dans : {new_file_name}")
+
 
