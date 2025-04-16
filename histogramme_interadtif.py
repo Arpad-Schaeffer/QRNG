@@ -27,11 +27,12 @@ def extract_pvalues_from_file(file_path):
                 continue
 
             # Cas standard : Test 01 à 14
-            match = re.match(r"^\d+\.\s+(.+?)\s{2,}([0-9.eE+-]+)\s+(Random|Non-Random)", line)
+            match = re.match(r"^(\d+)\.\s+(.+?)\s{2,}([0-9.eE+-]+)\s+(Random|Non-Random)", line)
             if match:
-                test_name = match.group(1).strip()
-                pval = float(match.group(2))
-                pvalues[test_name] = pval
+                test_number = match.group(1)  # Extraire le numéro du test (par exemple, "11")
+                test_name = f"{test_number}. {match.group(2).strip()}"  # Ajouter le numéro au nom du test
+                pval = float(match.group(3))  # Extraire la p-value
+                pvalues[test_name] = pval  # Ajouter au dictionnaire des p-values
                 continue
 
             
@@ -94,9 +95,16 @@ def plot_pvalues(pvalues, title):
     for bar, p_val in zip(bars, values):
         # Définir la couleur du texte en fonction de la p-value
         color = 'green' if p_val >= 0.01 else 'red'
+        
+        # Calculer la hauteur du texte entre la valeur minimale non nulle et maximale des p-values
+        non_zero_values = [v for v in values if v > 0]  # Exclure les p-values nulles
+        min_pval = min(non_zero_values)  # Plus petite valeur non nulle
+        max_pval = max(values)  # Plus grande valeur
+        text_y = (max_pval * min_pval) ** 0.5  # Moyenne géométrique
+
         # Afficher uniquement la valeur numérique de la p-value
-        plt.text(bar.get_x() + bar.get_width()/2, 10e-23, f'{p_val:.2e}', 
-                 ha='center', va='bottom', fontsize=8, color=color)
+        plt.text(bar.get_x() + bar.get_width()/2, text_y, f'{p_val:.2e}', 
+                 ha='center', va='center', fontsize=8, color=color)
 
     plt.yscale('log')
     plt.axhline(0.01, color='red', linestyle='--', label="Seuil critique (0.01)")
