@@ -57,5 +57,5 @@ def select_files():
 input_filename = select_files() # Remplace par le nom de ton fichier
 
 # Boucle sur différentes tailles de groupes
-for group_size in [2, 5, 10]:
+for group_size in [2]:
     apply_xor_extractor(input_filename, group_size)

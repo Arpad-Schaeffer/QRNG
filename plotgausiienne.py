@@ -88,5 +88,5 @@ def plot_gaussian_and_save_binary(k):
 
 if __name__ == "__main__":
     #k = int(input("Entrez le nombre de découpes (k) : "))
-    k=8
+    k=16
     plot_gaussian_and_save_binary(k)
