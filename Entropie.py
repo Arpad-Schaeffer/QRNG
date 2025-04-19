@@ -1,23 +1,20 @@
 import matplotlib.pyplot as plt
-import tkinter as tk
-from tkinter import filedialog
+import tkinter as Tk
+from tkinter.filedialog import askopenfilenames
 import re
 import os
 import numpy as np
 import math
 from collections import Counter
-from plotgausiienne import assigner_valeurs_binaires, decoupe_gaussienne
+import plotgausiienne as plotgausiienne
 import pandas as pd
 from scipy.stats import norm
 
-def select_files():
-    root = tk.Tk()
-    root.withdraw()
-    file_paths = filedialog.askopenfilenames(
-        title="Choisir un ou plusieurs fichiers de résultats (jusqu'à 4)",
-        filetypes=[("Fichiers csv", "*.csv"), ("Tous les fichiers", "*.*")]
-    )
+def select_file():
+    Tk().withdraw()  # Cacher la fenêtre principale de Tkinter
+    file_paths = askopenfilenames(filetypes=[("CSV files", "*.csv")])
     return file_paths
+
 
 def entropy_from_bin_distribution(bin_indices, k):
     """
@@ -29,7 +26,7 @@ def entropy_from_bin_distribution(bin_indices, k):
     return entropy
 
 def plot_histogram_and_entropy(k):
-    file_paths = select_files()  # Demander à l'utilisateur de sélectionner un ou plusieurs fichiers texte
+    file_paths = select_file()  # Demander à l'utilisateur de sélectionner un ou plusieurs fichiers texte
     if not file_paths:
         print("Aucun fichier sélectionné.")
         return
@@ -56,8 +53,8 @@ def plot_histogram_and_entropy(k):
 
             # Calculer les entropies pour chaque découpage
             for i in range(1, k + 1):  # Parcourir les découpages de 1 à k
-                limites = decoupe_gaussienne(mean, std, i)  # Découper la gaussienne
-                bin_indices = assigner_valeurs_binaires(values, limites, i)[1]  # Obtenir les indices des bins
+                limites = plotgausiienne.decoupe_gaussienne(mean, std, i)  # Découper la gaussienne
+                bin_indices = plotgausiienne.assigner_valeurs_binaires(values, limites, i)[1]  # Obtenir les indices des bins
                 entropy = entropy_from_bin_distribution(bin_indices, i)  # Calculer l'entropie
                 entropies.append(entropy)  # Ajouter l'entropie à la liste
 
