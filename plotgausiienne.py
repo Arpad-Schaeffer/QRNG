@@ -24,12 +24,14 @@ def assigner_valeurs_binaires(values, limites, k):
     Assigne des valeurs binaires à chaque valeur en fonction des intervalles définis.
     """
     binary_values = []
+    binary_indices = []
     for value in values:
         for i in range(k):
             if limites[i] <= value < limites[i + 1]:
                 binary_values.append(format(i, f'0{k.bit_length() - 1}b'))  # Valeur binaire
+                binary_indices.append(i)  # Indice de l'intervalle
                 break
-    return binary_values
+    return binary_values, binary_indices
 
 def plot_gaussian_and_save_binary(k):
     csv_file = select_file()  # Demander à l'utilisateur de sélectionner un fichier CSV
