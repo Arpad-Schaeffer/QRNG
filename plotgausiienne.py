@@ -10,10 +10,11 @@ def select_file():
     file_path = askopenfilename(filetypes=[("CSV files", "*.csv")])
     return file_path
 
-def decoupe_gaussienne(mu, sigma, k):
+def decoupe_gaussienne(mu, sigma, n):
     """
     Découpe une gaussienne de moyenne mu et d'écart-type sigma en k intervalles d'aires égales.
     """
+    k = 2 ** n -1
     quantiles = np.linspace(0, 1, k + 1)
     limites = norm.ppf(quantiles, loc=mu, scale=sigma)
     limites[0], limites[-1] = -np.inf, np.inf
