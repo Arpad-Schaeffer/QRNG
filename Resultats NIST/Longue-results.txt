@@ -1,0 +1,42 @@
+Test Data File:C:/Users/padou/Desktop/cours/QRNG/data/longue/longue_binary.txt
+
+
+Type of Test                                      	P-Value             	Conclusion
+01. Frequency (Monobit) Test                      	8.583637417235957e-11	Non-Random
+02. Frequency Test within a Block                 	1.0                 	Random
+03. Runs Test                                     	0.0                 	Non-Random
+04. Test for the Longest Run of Ones in a Block   	4.40038449436048e-220	Non-Random
+05. Binary Matrix Rank Test                       	0.851032968584843   	Random
+06. Discrete Fourier Transform (Spectral) Test    	0.0                 	Non-Random
+07. Non-overlapping Template Matching Test        	0.0                 	Non-Random
+08. Overlapping Template Matching Test            	0.0                 	Non-Random
+09. Maurer's "Universal Statistical" Test         	0.0                 	Non-Random
+10. Linear Complexity Test                        	0.44089962094983526 	Random
+11. Serial Test:
+													0.0                 	Non-Random
+													0.0                 	Non-Random
+12. Approximate Entropy Test                      	0.0                 	Non-Random
+13. Cumulative Sums Test (Forward)                	1.6496719165734292e-10	Non-Random
+14. Cumulative Sums Test (Backward)               	1.7053692808072512e-10	Non-Random
+15. Random Excursions Test:
+				State     	Chi Squared         	P-Value             	Conclusion
+				-4        	5.079050395668472   	0.4063092105054679  	Random
+				-3        	3.244160000000001   	0.6624009999412462  	Random
+				-2        	6.330864197530864   	0.27534230965004713 	Random
+				-1        	10.200000000000001  	0.0697626612715432  	Random
+				+1        	6.6000000000000005  	0.2521281507726646  	Random
+				+2        	3.3333333333333335  	0.6487423586675933  	Random
+				+3        	2.0                 	0.8491450360846096  	Random
+				+4        	1.4285714285714286  	0.9211625381990318  	Random
+16. Random Excursions Variant Test:
+				State     	COUNTS              	P-Value             	Conclusion
+				-9.0      	16                  	0.7448816195459561  	Random
+				-8.0      	18                  	0.6441672226837103  	Random
+				-7.0      	24                  	0.3852612410903167  	Random
+				-6.0      	33                  	0.12098326098309795 	Random
+				-5.0      	46                  	0.007290358091535643	Non-Random
+				-4.0      	57                  	7.120441633556116e-05	Non-Random
+				-3.0      	45                  	0.00046525815807105003	Non-Random
+				-2.0      	24                  	0.07070114486598304 	Random
+				-1.0      	17                  	0.11752486809663916 	Random
+				+1.0      	1                   	0.04417134490844262 	Random

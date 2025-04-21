@@ -1,0 +1,41 @@
+Test Data File:C:/Users/padou/Desktop/cours/X/psc/PSC-QRNG/data/longue/longue_binary_XOR2_VonNeumann.txt
+
+
+Type of Test                                      	P-Value             	Conclusion
+01. Frequency (Monobit) Test                      	0.10183958739609647 	Random
+02. Frequency Test within a Block                 	0.9560474279814061  	Random
+03. Runs Test                                     	6.083083076431811e-45	Non-Random
+04. Test for the Longest Run of Ones in a Block   	0.7714498016153308  	Random
+05. Binary Matrix Rank Test                       	0.04684517591608384 	Random
+06. Discrete Fourier Transform (Spectral) Test    	0.027637697885514758	Random
+07. Non-overlapping Template Matching Test        	0.010828811419485914	Random
+08. Overlapping Template Matching Test            	0.012483580670010931	Random
+09. Maurer's "Universal Statistical" Test         	0.3751604526174922  	Random
+10. Linear Complexity Test                        	0.9730421082780204  	Random
+11. Serial Test:
+													0.6342196949257227  	Random
+													0.9468873513036651  	Random
+12. Approximate Entropy Test                      	0.013763468661218558	Random
+13. Cumulative Sums Test (Forward)                	0.1025908394311918  	Random
+14. Cumulative Sums Test (Backward)               	0.20367733459510035 	Random
+15. Random Excursions Test:
+				State     	Chi Squared         	P-Value             	Conclusion
+				-4        	0.14285714285714285 	0.9996100613790039  	Random
+				-3        	0.2                 	0.9991138612111875  	Random
+				-2        	0.3333333333333333  	0.9969687632568645  	Random
+				-1        	1.0                 	0.9625657732472964  	Random
+				+1        	7.0                 	0.22064030793671066 	Random
+				+2        	36.925925925925924  	6.197795337574507e-07	Non-Random
+				+3        	50.83999999999999   	9.326695044407569e-10	Non-Random
+				+4        	72.14285714285714   	3.6679032349766e-14 	Non-Random
+16. Random Excursions Variant Test:
+				State     	COUNTS              	P-Value             	Conclusion
+				+1.0      	2                   	0.4795001221869535  	Random
+				+2.0      	4                   	0.22067136191984693 	Random
+				+3.0      	3                   	0.5270892568655381  	Random
+				+4.0      	2                   	0.7892680261342813  	Random
+				+5.0      	2                   	0.813663715766792   	Random
+				+6.0      	1                   	1.0                 	Random
+				+7.0      	1                   	1.0                 	Random
+				+8.0      	2                   	0.8551321405847059  	Random
+				+9.0      	2                   	0.8638317428547264  	Random

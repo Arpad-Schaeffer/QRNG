@@ -1,0 +1,42 @@
+Test Data File:C:/Users/padou/Desktop/cours/X/psc/PSC-QRNG/data/longue/longue_binary_XOR2.txt
+
+
+Type of Test                                      	P-Value             	Conclusion
+01. Frequency (Monobit) Test                      	0.0                 	Non-Random
+02. Frequency Test within a Block                 	0.0                 	Non-Random
+03. Runs Test                                     	0.0                 	Non-Random
+04. Test for the Longest Run of Ones in a Block   	2.1622349726706396e-272	Non-Random
+05. Binary Matrix Rank Test                       	0.20615726722898012 	Random
+06. Discrete Fourier Transform (Spectral) Test    	0.0                 	Non-Random
+07. Non-overlapping Template Matching Test        	0.0                 	Non-Random
+08. Overlapping Template Matching Test            	0.0                 	Non-Random
+09. Maurer's "Universal Statistical" Test         	0.0                 	Non-Random
+10. Linear Complexity Test                        	0.3971314008488707  	Random
+11. Serial Test:
+													0.0                 	Non-Random
+													0.0                 	Non-Random
+12. Approximate Entropy Test                      	0.0                 	Non-Random
+13. Cumulative Sums Test (Forward)                	0.0                 	Non-Random
+14. Cumulative Sums Test (Backward)               	0.0                 	Non-Random
+15. Random Excursions Test:
+				State     	Chi Squared         	P-Value             	Conclusion
+				-4        	0.7142857142857143  	0.9821754508742055  	Random
+				-3        	1.0                 	0.9625657732472964  	Random
+				-2        	1.6666666666666667  	0.8930721407359578  	Random
+				-1        	2.2                 	0.8208359692144962  	Random
+				+1        	5.0                 	0.41588018699550794 	Random
+				+2        	14.466666666666667  	0.012901652663472256	Random
+				+3        	13.000000000000002  	0.023378768103563832	Random
+				+4        	17.76384839650146   	0.003257404716387604	Non-Random
+16. Random Excursions Variant Test:
+				State     	COUNTS              	P-Value             	Conclusion
+				-1.0      	1                   	0.2059032107320684  	Random
+				+1.0      	6                   	0.7518296340458492  	Random
+				+2.0      	4                   	0.8551321405847059  	Random
+				+3.0      	3                   	0.7772974107895215  	Random
+				+4.0      	4                   	0.9048611294504482  	Random
+				+5.0      	3                   	0.8330288937195214  	Random
+				+6.0      	1                   	0.7029175632453667  	Random
+				+7.0      	1                   	0.7257209852083116  	Random
+				+8.0      	4                   	0.9349253116421173  	Random
+				+9.0      	6                   	0.9388649898237753  	Random

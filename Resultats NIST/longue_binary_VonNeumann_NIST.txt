@@ -1,0 +1,50 @@
+Test Data File:C:/Users/padou/Desktop/cours/X/psc/PSC-QRNG/data/longue/longue_binary_VonNeumann.txt
+
+
+Type of Test                                      	P-Value             	Conclusion
+01. Frequency (Monobit) Test                      	0.4020307034986532  	Random
+02. Frequency Test within a Block                 	1.291307166238181e-272	Non-Random
+03. Runs Test                                     	0.0                 	Non-Random
+04. Test for the Longest Run of Ones in a Block   	2.80068344367528e-187	Non-Random
+05. Binary Matrix Rank Test                       	0.6000281527099263  	Random
+06. Discrete Fourier Transform (Spectral) Test    	0.0                 	Non-Random
+07. Non-overlapping Template Matching Test        	0.0                 	Non-Random
+08. Overlapping Template Matching Test            	0.0                 	Non-Random
+09. Maurer's "Universal Statistical" Test         	0.0                 	Non-Random
+10. Linear Complexity Test                        	0.07686373887366774 	Random
+11. Serial Test:
+													0.0                 	Non-Random
+													0.0                 	Non-Random
+12. Approximate Entropy Test                      	0.0                 	Non-Random
+13. Cumulative Sums Test (Forward)                	0.6457632699355194  	Random
+14. Cumulative Sums Test (Backward)               	0.1375179145566432  	Random
+15. Random Excursions Test:
+				State     	Chi Squared         	P-Value             	Conclusion
+				-4        	43.88453038184444   	2.4446611111661914e-08	Non-Random
+				-3        	38.65361702127658   	2.7882346082698967e-07	Non-Random
+				-2        	45.34567901234567   	1.2340618759264062e-08	Non-Random
+				-1        	48.148936170212764  	3.3117570828483976e-09	Non-Random
+				+1        	66.19999999999999   	6.316649037167346e-13	Non-Random
+				+2        	51.7184134489099    	6.161916937950976e-10	Non-Random
+				+3        	73.64454468085106   	1.7839735400972874e-14	Non-Random
+				+4        	79.09819844568308   	1.2956220077353923e-15	Non-Random
+16. Random Excursions Variant Test:
+				State     	COUNTS              	P-Value             	Conclusion
+				-9.0      	1257                	0.07619682037310328 	Random
+				-8.0      	1230                	0.08418115742117636 	Random
+				-7.0      	1149                	0.18125853485982435 	Random
+				-6.0      	1083                	0.3200285529896568  	Random
+				-5.0      	1029                	0.4938421607073882  	Random
+				-4.0      	1027                	0.4482188906417728  	Random
+				-3.0      	1001                	0.5292397567809857  	Random
+				-2.0      	989                 	0.5141019147323367  	Random
+				-1.0      	979                 	0.36840347160064335 	Random
+				+1.0      	948                 	0.8536163311232883  	Random
+				+2.0      	938                 	0.978753902383489   	Random
+				+3.0      	929                 	0.9096687774564154  	Random
+				+4.0      	958                 	0.8753175047379411  	Random
+				+5.0      	957                 	0.896019023525645   	Random
+				+6.0      	960                 	0.8893894511022202  	Random
+				+7.0      	976                 	0.8178759808771948  	Random
+				+8.0      	910                 	0.8582145731210393  	Random
+				+9.0      	855                 	0.6344579246760671  	Random
