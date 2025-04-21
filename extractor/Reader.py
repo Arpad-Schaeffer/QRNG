@@ -55,7 +55,7 @@ def select_file():
         n'est sélectionné.
     """
     Tk().withdraw()  # Cacher la fenêtre principale de Tkinter
-    file_path = askopenfilename(filetypes=[("CSV files", "*.csv")])
+    file_path = askopenfilename(filetypes=[("txt files", "*.txt")])
     return file_path
 
 # Point d'entrée principal du script
@@ -71,12 +71,12 @@ if __name__ == "__main__":
     transformed_data = transform_column_data(column_data)
 
     # Générer un nouveau nom de fichier pour les données transformées
-    new_file_name = file_path.replace('.csv', '_extracted.txt')
+    new_file_name = file_path.replace('.txt', '_binary.txt')
 
     # Écrire les données transformées dans un nouveau fichier
     with open(new_file_name, "w", encoding="utf-8") as fichier:
         for value in transformed_data:
-            fichier.write(str(value) + '\n')  # Ajoute un saut de ligne pour chaque valeur
+            fichier.write(str(value))  # Ajoute un saut de ligne pour chaque valeur
 
     print(f"Les données transformées ont été enregistrées dans : {new_file_name}")
 
