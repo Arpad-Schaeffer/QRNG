@@ -7,8 +7,27 @@ def convert_bits_to_uint32(input_file, output_file):
             out.write(f"{int(chunk, 2)}\n")
 
 # ==== UTILISATION INTERACTIVE ====
-#input_file = input("Entrez le nom du fichier contenant les bits (ex: input.txt) : ").strip()
-input_file = 'longue_binary.txt'
+def select_file():
+    """
+    Ouvre une boîte de dialogue pour permettre à l'utilisateur de sélectionner
+    un fichier texte.
+
+    Returns:
+        str: Chemin du fichier sélectionné ou une chaîne vide si aucun fichier
+        n'est sélectionné.
+    """
+    from tkinter import Tk
+    from tkinter.filedialog import askopenfilename
+
+    Tk().withdraw()  # Cacher la fenêtre principale de Tkinter
+    file_path = askopenfilename(filetypes=[("txt files", "*.txt")])
+    return file_path
+
+
+input_file = select_file()  # Utiliser la fonction de sélection de fichier
+if not input_file:  # Vérifie si un fichier a été sélectionné
+    print("Aucun fichier sélectionné.")
+    exit()
 
 # Construire le nom du fichier de sortie automatiquement
 if '.' in input_file:
