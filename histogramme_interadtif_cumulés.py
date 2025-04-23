@@ -78,7 +78,7 @@ def plot_pvalues_comparison(pvalues_dict, file_names):
     tests = sorted(set(test for pvalues in pvalues_dict.values() for test in pvalues.keys()))
     x = np.arange(len(tests))  # Position des tests sur l'axe x
     width = 0.2  # Largeur des barres
-    colors = ['skyblue', 'orange', 'green', 'purple']  # Couleurs pour chaque fichier
+    colors = ['#1f77b4', '#4a90e2', '#87ceeb', '#add8e6']  # Nuances de bleu
     seuil_critique = 0.01  # Seuil critique pour les tests réussis
 
     plt.figure(figsize=(14, 7))
