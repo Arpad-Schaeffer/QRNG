@@ -87,7 +87,7 @@ def plot_pvalues_comparison(pvalues_dict, file_names):
     success_counts = {}
     for i, (file_name, pvalues) in enumerate(pvalues_dict.items()):
         values = [pvalues.get(test, 0) for test in tests]  # Obtenir les p-values pour chaque test
-        plt.bar(x + i * width, values, width, label=file_name, color=colors[i % len(colors)], edgecolor='black')
+        plt.bar(x + i * width, values, width, label=f"{file_name} ({sum(1 for pval in values if pval > seuil_critique)} réussis)", color=colors[i % len(colors)], edgecolor='black')
         success_counts[file_name] = sum(1 for pval in values if pval > seuil_critique)
 
     plt.axhline(seuil_critique, color='red', linestyle='--', label=f"Seuil critique ({seuil_critique})")
